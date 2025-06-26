@@ -14,14 +14,15 @@
 
     h1 {
       color: #c29200;
-      font-size: 2.5rem;
-      margin-bottom: 20px;
+      font-size: 3rem;  /* بزرگ‌ترش کردم */
+      margin-bottom: 30px;
     }
 
     #coin {
-      width: 180px;
+      width: 140px;  /* کوچیک‌تر کردم */
       cursor: pointer;
       transition: transform 0.2s ease;
+      user-select: none;
     }
 
     #coin.clicked {
@@ -31,7 +32,14 @@
     #count {
       font-size: 2rem;
       color: #444;
-      margin-top: 20px;
+      margin-top: 25px;
+      font-weight: bold;
+    }
+
+    button, /* اگر دکمه‌ای اضافه شد */
+    #count, 
+    h1 {
+      user-select: none; /* جلوگیری از انتخاب متن تصادفی */
     }
 
     @keyframes bounce {
@@ -49,13 +57,14 @@
       text-align: center;
       color: #666;
       font-size: 1rem;
+      user-select: none;
     }
   </style>
 </head>
 <body>
 
   <h1>بزن روی سکه 😎</h1>
-  <img id="coin" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Gold_coin_icon.png/240px-Gold_coin_icon.png" onclick="addCoin()">
+  <img id="coin" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Gold_coin_icon.png/240px-Gold_coin_icon.png" onclick="addCoin()" alt="سکه">
   <div id="count">تعداد سکه: 0</div>
 
   <div id="footer">
@@ -63,7 +72,7 @@
   </div>
 
   <script>
-    let coins = localStorage.getItem("coins") || 0;
+    let coins = parseInt(localStorage.getItem("coins")) || 0;
     document.getElementById("count").innerText = "تعداد سکه: " + coins;
 
     function addCoin() {
@@ -81,4 +90,4 @@
   </script>
 
 </body>
-  </html>
+</html>
